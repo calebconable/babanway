@@ -21,3 +21,9 @@ npm run dev
 ```bash
 npm run deploy
 ```
+
+Then before push
+
+```bash
+npx @cloudflare/next-on-pages
+```
