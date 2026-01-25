@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Kalmahar Basmati Rice 5KG",
+    "description": "Premium 1121 basmati rice with long, fluffy grains and natural aroma.",
+    "stockQuantity": 42,
+    "imageUrl": "/images/products/rice-v2.png",
+    "sku": "RICE-5KG"
+  },
+  {
+    "id": 2,
+    "name": "Instant Noodles",
+    "description": "Quick-cooking instant noodles with savory seasoning, perfect for fast meals.",
+    "stockQuantity": 90,
+    "imageUrl": "/images/products/noodle.webp",
+    "sku": "NOODLE-INSTANT"
+  },
+  {
+    "id": 3,
+    "name": "Assorted Soda Drinks",
+    "description": "Refreshing carbonated soft drinks served chilled.",
+    "stockQuantity": 120,
+    "imageUrl": "/images/products/soda.png",
+    "sku": "SODA-DRINK"
+  },
+  {
+    "id": 4,
+    "name": "Premium Black Tea",
+    "description": "Bold black tea leaves offering a rich aroma and full-bodied flavor.",
+    "stockQuantity": 64,
+    "imageUrl": "/images/products/tea.png",
+    "sku": "TEA-BLACK"
+  },
+  {
+    "id": 5,
+    "name": "Full Cream Milk Powder",
+    "description": "Rich and creamy milk powder suitable for tea, coffee, and everyday use.",
+    "stockQuantity": 55,
+    "imageUrl": "/images/products/milk-powder.png",
+    "sku": "MILK-POWDER"
+  }
+]
