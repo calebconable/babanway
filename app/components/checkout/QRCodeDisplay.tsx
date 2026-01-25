@@ -79,6 +79,7 @@ export function QRCodeDisplay({
                 </div>
               </div>
             ) : qrDataUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={qrDataUrl}
                 alt={`QR Code for order ${referenceCode}`}
