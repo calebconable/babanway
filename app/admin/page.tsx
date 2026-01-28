@@ -3,8 +3,6 @@ import { Package, FolderOpen, TrendingDown, AlertCircle, Plus, ArrowRight } from
 import { Button } from '@/app/components/ui/Button';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Dashboard | Admin',
 };

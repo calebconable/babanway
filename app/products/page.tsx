@@ -7,8 +7,6 @@ import { getProducts } from '@/lib/actions/products';
 import { getCategories } from '@/lib/actions/categories';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Products',
   description: 'Browse our selection of quality products at Beban Way Market.',

@@ -8,8 +8,6 @@ import { getProductsByCategory } from '@/lib/actions/products';
 import { getCategories, getCategoryBySlug } from '@/lib/actions/categories';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
 }

@@ -6,8 +6,6 @@ import { Button } from '@/app/components/ui/Button';
 import { QrCode, Clock, CheckCircle, XCircle, Package } from 'lucide-react';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Orders | Admin',
 };

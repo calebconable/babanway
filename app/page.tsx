@@ -10,8 +10,6 @@ import { getProducts } from '@/lib/actions/products';
 import { getCategories } from '@/lib/actions/categories';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 const categoryIcons: Record<string, typeof Milk> = {
   dairy: Milk,
   produce: Apple,

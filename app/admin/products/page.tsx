@@ -6,8 +6,6 @@ import { getCategories } from '@/lib/actions/categories';
 import { formatPriceSimple } from '@/lib/utils/formatPrice';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Products | Admin',
 };

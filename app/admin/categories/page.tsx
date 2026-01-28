@@ -2,8 +2,6 @@ import { FolderOpen, Plus } from 'lucide-react';
 import { Button } from '@/app/components/ui/Button';
 import { getCategories } from '@/lib/actions/categories';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Categories | Admin',
 };

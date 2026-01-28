@@ -6,8 +6,6 @@ import { CustomerAuthProvider } from '@/app/components/auth/CustomerAuthProvider
 import { SimplifiedProvider } from '@/app/components/simplified/SimplifiedProvider';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 // Single clean font for minimal design
 const inter = Inter({
   subsets: ['latin'],

@@ -9,8 +9,6 @@ import { StockBadge } from '@/app/components/ui/Badge';
 import { getProductById } from '@/lib/actions/products';
 import { formatPrice } from '@/lib/utils/formatPrice';
 
-export const runtime = 'edge';
-
 interface ProductPageProps {
   params: Promise<{ id: string }>;
 }

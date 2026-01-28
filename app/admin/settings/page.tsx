@@ -1,7 +1,5 @@
 import { User, Globe, Bell, Database, ChevronRight } from 'lucide-react';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Settings | Admin',
 };

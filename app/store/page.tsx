@@ -4,8 +4,6 @@ import { Header } from '@/app/components/layout/Header';
 import { Footer } from '@/app/components/layout/Footer';
 import { StoreCarousel } from '@/app/components/store/StoreCarousel';
 
-export const runtime = 'edge';
-
 export const metadata = {
   title: 'Store Info',
   description:
