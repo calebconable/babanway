@@ -1,6 +1,6 @@
 'use server';
 
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { getDb, products, categories, type Product, type NewProduct } from '../db';
 import { eq, like, desc, and, sql, or } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
@@ -54,7 +54,7 @@ export async function getProducts(options?: {
     return getSimplifiedProducts(options);
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const conditions = [];
@@ -102,7 +102,7 @@ export async function getProductById(id: number): Promise<Product | null> {
     return simplifiedProducts.find((product) => product.id === id) ?? null;
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -125,7 +125,7 @@ export async function getProductsByCategory(
     return [];
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   // First get the category
@@ -163,7 +163,7 @@ export async function createProduct(
     throw new Error('Simplified mode is enabled. Products are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db.insert(products).values(data).returning();
@@ -186,7 +186,7 @@ export async function updateProduct(
     throw new Error('Simplified mode is enabled. Products are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -213,7 +213,7 @@ export async function deleteProduct(id: number): Promise<boolean> {
     throw new Error('Simplified mode is enabled. Products are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   await db.delete(products).where(eq(products.id, id));
@@ -236,7 +236,7 @@ export async function updateStock(
     throw new Error('Simplified mode is enabled. Products are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -262,7 +262,7 @@ export async function toggleProductStatus(id: number): Promise<Product | null> {
     throw new Error('Simplified mode is enabled. Products are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   // Get current status

@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getOrderByReference, completeOrder, cancelOrder } from '@/lib/actions/orders';
 import { isSimplifiedMode } from '@/lib/config/simplified';
 
-export const runtime = 'edge';
-
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ reference: string }> }

@@ -1,6 +1,6 @@
 'use server';
 
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { getDb, orders, customers, type Order, type OrderItem } from '../db';
 import { eq, desc, and, sql } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
@@ -26,7 +26,7 @@ export async function createOrder(
     throw new Error('Simplified mode is enabled. Ordering is disabled.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   let referenceCode = generateReferenceCode();
@@ -70,7 +70,7 @@ export async function getOrderByReference(
     return null;
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -102,7 +102,7 @@ export async function getOrdersByCustomer(customerId: number): Promise<Order[]> 
     return [];
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   return db
@@ -121,7 +121,7 @@ export async function getOrders(options?: {
     return [];
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const conditions = [];
@@ -158,7 +158,7 @@ export async function completeOrder(orderId: number): Promise<Order | null> {
     return null;
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -181,7 +181,7 @@ export async function cancelOrder(orderId: number): Promise<Order | null> {
     return null;
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -213,7 +213,7 @@ export async function getOrderStats(): Promise<{
     };
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const today = new Date();

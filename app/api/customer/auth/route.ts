@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { getDb, customers } from '@/lib/db';
 import { eq } from 'drizzle-orm';
 import { isSimplifiedMode } from '@/lib/config/simplified';
-
-export const runtime = 'edge';
 
 type LoginRequest = {
   email: string;
@@ -68,7 +66,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { env } = getRequestContext();
+    const { env } = await getCloudflareContext();
     const db = getDb(env.DB);
 
     const users = await db
@@ -183,7 +181,7 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    const { env } = getRequestContext();
+    const { env } = await getCloudflareContext();
     const db = getDb(env.DB);
 
     const passwordHash = await hashPassword(password);

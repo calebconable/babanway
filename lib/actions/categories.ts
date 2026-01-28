@@ -1,6 +1,6 @@
 'use server';
 
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { getDb, categories, type Category, type NewCategory } from '../db';
 import { eq, asc, sql } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
@@ -14,7 +14,7 @@ export async function getCategories(): Promise<Category[]> {
     return [];
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   return db
@@ -31,7 +31,7 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
     return null;
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -51,7 +51,7 @@ export async function getCategoryById(id: number): Promise<Category | null> {
     return null;
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -73,7 +73,7 @@ export async function createCategory(
     throw new Error('Simplified mode is enabled. Categories are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db.insert(categories).values(data).returning();
@@ -96,7 +96,7 @@ export async function updateCategory(
     throw new Error('Simplified mode is enabled. Categories are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const result = await db
@@ -123,7 +123,7 @@ export async function deleteCategory(id: number): Promise<boolean> {
     throw new Error('Simplified mode is enabled. Categories are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   await db.delete(categories).where(eq(categories.id, id));
@@ -145,7 +145,7 @@ export async function seedCategories(
     throw new Error('Simplified mode is enabled. Categories are read-only.');
   }
 
-  const { env } = getRequestContext();
+  const { env } = await getCloudflareContext();
   const db = getDb(env.DB);
 
   const results: Category[] = [];

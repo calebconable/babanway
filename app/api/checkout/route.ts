@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getRequestContext } from '@cloudflare/next-on-pages';
+import { getCloudflareContext } from '@opennextjs/cloudflare';
 import { getDb, orders, type OrderItem } from '@/lib/db';
 import { eq } from 'drizzle-orm';
 import { isSimplifiedMode } from '@/lib/config/simplified';
-
-export const runtime = 'edge';
 
 type CheckoutRequest = {
   items: {
@@ -75,7 +73,7 @@ export async function POST(request: NextRequest) {
       0
     );
 
-    const { env } = getRequestContext();
+    const { env } = await getCloudflareContext();
     const db = getDb(env.DB);
 
     let referenceCode = generateReferenceCode();
