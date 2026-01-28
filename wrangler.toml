@@ -1,13 +1,19 @@
 name = "bebanway"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".vercel/output/static"
+
+# Workers configuration
+main = ".open-next/worker.js"
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
 
 # D1 Database binding
 # Run: wrangler d1 create beban-db
 # Then update the database_id below
-[[d1_databases]]
-binding = "DB"
-database_name = "beban-db"
-database_id = "YOUR_D1_DATABASE_ID"
-migrations_dir = "lib/db/migrations"
+#[[d1_databases]]
+#binding = "DB"
+#database_name = "beban-db"
+#database_id = "YOUR_D1_DATABASE_ID"
+#migrations_dir = "lib/db/migrations"
